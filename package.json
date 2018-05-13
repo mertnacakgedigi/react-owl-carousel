@@ -2,11 +2,12 @@
   "name": "react-owl-carousel",
   "version": "2.2.0",
   "description": "React.js + Owl Carousel",
-  "main": "lib/OwlCarousel.js",
+  "main": "dist/OwlCarousel.js",
+  "types": "index.d.ts",
   "scripts": {
     "clean": "rimraf lib",
     "build:uncompressed": "cross-env NODE_ENV=production webpack --config webpack.config.build.js",
-    "build:minified": "cross-env NODE_ENV=production webpack --config webpack.config.build.js --minimize",
+    "build:minified": "cross-env NODE_ENV=production webpack --config webpack.config.build.js --env.minimize",
     "build": "npm run clean && npm run build:uncompressed && npm run build:minified ",
     "start": "webpack-dev-server"
   },
@@ -26,8 +27,8 @@
   },
   "homepage": "https://github.com/seal789ie/react-owl-carousel#readme",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

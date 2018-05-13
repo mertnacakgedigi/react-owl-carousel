@@ -1,7 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var minimize = process.argv.indexOf('--minimize') !== -1;
 
 var config = {
 	devtool: 'eval',
@@ -12,7 +10,7 @@ var config = {
 		extensions: [".jsx", ".js"],
 	},
 	output: {
-		path: path.join(__dirname, "lib"),
+		path: path.join(__dirname, "dist"),
 		filename: "[name].js",
 		library: ["react-owl-carousel"],
 		libraryTarget: "umd"
@@ -64,15 +62,18 @@ var config = {
 	},
 };
 
-if (minimize) {
-	config.plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			sourceMap: true,
-			comments: false
-		})
-	);
-	config.devtool = 'source-map';
-	config.output.filename = "[name].min.js";
-}
+module.exports = function(env) {
 
-module.exports = config;
+	if (env && env.minimize) {
+		config.plugins.push(
+			new webpack.optimize.UglifyJsPlugin({
+				sourceMap: true,
+				comments: false
+			})
+		);
+		config.devtool = 'source-map';
+		config.output.filename = "[name].min.js";
+	}
+	
+	return config;
+}
