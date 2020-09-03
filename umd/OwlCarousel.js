@@ -1,3 +1,4 @@
+if(process.browser){
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react')) :
     typeof define === 'function' && define.amd ? define(['react'], factory) :
@@ -3596,4 +3597,4 @@
 
     return ReactOwlCarousel;
 
-})));
+})))};
